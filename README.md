@@ -35,3 +35,7 @@ app.get('/default.json', function(req, res, next) {
   }
 });
 ```
+
+## Changelog
+
+- __0.1.0__ - Initial functionality
