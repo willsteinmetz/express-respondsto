@@ -13,19 +13,11 @@ express = require('express'),
 
 app.use(respondTo.determineExtension);
 
-// Default HTML would render the html template
+/**
+ * When the user visits /default, the default HTML template will be rendered.
+ * When the user visits /default.json, the json response will be sent to the browser.
+ */
 app.get('/default', function(req, res, next) {
-  switch(req.format) {
-    case 'json':
-      res.json({ default: 'data' });
-    case 'html':
-    default:
-      res.render('default');
-  }
-});
-
-// Would render the JSON object
-app.get('/default.json', function(req, res, next) {
   switch(req.format) {
     case 'json':
       res.json({ default: 'data' });
