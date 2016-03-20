@@ -1,6 +1,6 @@
 {
   "name": "express-respondto",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "An NPM module for Express to add basic functionality similar to the responds_to method in Ruby on Rails",
   "main": "index.js",
   "scripts": {
