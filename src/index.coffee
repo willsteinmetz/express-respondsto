@@ -5,10 +5,12 @@
 # respond_to method.
 ###
 
+defaultExtension = 'html'
+
 determineExtension = (req, res, next) ->
   respondToRegex = /\.\w+$/
   format = req.url.match(respondToRegex)
-  req.format = 'html'
+  req.format = defaultExtension
   req.format = format[0].replace(/^\./, '') if format?
   # update the value of URL to router properly
   if format?
@@ -16,6 +18,10 @@ determineExtension = (req, res, next) ->
     req.url = req.url.replace(formatRegex, '')
   next()
 
+setDefaultExtension = (extension) ->
+  defaultExtension = extension if extension?
+
 module.exports = {
   determineExtension
+  setDefaultExtension
 }

@@ -5,13 +5,15 @@
  * This Express middleware provides basic functionality similar to the
  * respond_to method.
  */
-var determineExtension;
+var defaultExtension, determineExtension, setDefaultExtension;
+
+defaultExtension = 'html';
 
 determineExtension = function(req, res, next) {
   var format, formatRegex, respondToRegex;
   respondToRegex = /\.\w+$/;
   format = req.url.match(respondToRegex);
-  req.format = 'html';
+  req.format = defaultExtension;
   if (format != null) {
     req.format = format[0].replace(/^\./, '');
   }
@@ -22,8 +24,15 @@ determineExtension = function(req, res, next) {
   return next();
 };
 
+setDefaultExtension = function(extension) {
+  if (extension != null) {
+    return defaultExtension = extension;
+  }
+};
+
 module.exports = {
-  determineExtension: determineExtension
+  determineExtension: determineExtension,
+  setDefaultExtension: setDefaultExtension
 };
 
 //# sourceMappingURL=index.js.map
